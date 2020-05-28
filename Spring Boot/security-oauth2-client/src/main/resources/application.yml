@@ -1,0 +1,33 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          oauthsvr:
+            client-id: client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: APP
+            client-authentication-method: basic
+        provider:
+          oauthsvr:
+            authorization-uri: http://oauthsvr:8081/oauth/authorize
+            token-uri: http://oauthsvr:8081/oauth/token
+            user-info-uri: http://oauthsvr:8081/user/info
+            user-name-attribute: name
+            user-info-authentication-method: form
+  http:
+    log-request-details: false
+
+server:
+  port: 8080
+  address: oauthcli
+
+logging:
+  level:
+    web: debug
+    root: info
+    ori.springframework.web: debug
+    org.springframework.security: info
+    org.springframework.boot.autoconfigure: info

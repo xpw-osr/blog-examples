@@ -1,0 +1,13 @@
+spring:
+  http:
+    log-request-details: true
+
+logging:
+  level:
+    web: debug
+
+server:
+  address: oauthsvr
+  port: 8081
+
+use_jwt_token: true

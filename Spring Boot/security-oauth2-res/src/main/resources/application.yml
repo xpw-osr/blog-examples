@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaque:
+          introspection-uri: "http://oauthsvr:8081/oauth/check_token"
+          introspection-client-id: client
+          introspection-client-secret: secret
+
+server:
+  address: oauthres
+  port: 8082
