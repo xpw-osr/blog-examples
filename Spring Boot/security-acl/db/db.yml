@@ -1,0 +1,14 @@
+version: '2'
+services:
+    acl-demo-db:
+      image: postgres
+      container_name: acl-demo-db
+      ports:
+        - "5432:5432"
+      environment:
+        - POSTGRES_PASSWORD=123456
+        - POSTGRES_USER=demo
+        - PGDATA=/var/lib/postgresql/data/pgdata
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - /etc/timezone:/etc/timezone:ro

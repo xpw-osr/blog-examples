@@ -1,0 +1,16 @@
+jwt:
+  secret: securityjwt
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/demo
+    username: demo
+    password: 123456
+    driverClassName: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://127.0.0.1:5432/demo
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      dialect: org.hibernate.dialect.PostgreSQL10Dialect
