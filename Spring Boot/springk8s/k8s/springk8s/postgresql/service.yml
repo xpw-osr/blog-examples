@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: springk8s-db
+  name: springk8s-db
+  namespace: springk8s
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    k8s-app: springk8s-db

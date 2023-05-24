@@ -1,0 +1,16 @@
+server:
+  port: 8090
+  
+springdoc:
+  api-docs:
+    path: '/apidocs'
+    enabled: true
+  swagger-ui:
+    path: 'swagger-ui.html'
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

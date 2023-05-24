@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://springk8s-db:5432/postgres?useSSL=false
+    username: postgres
+    password: postgres
+  flyway:
+    url: jdbc:postgresql://springk8s-db:5432/postgres?useSSL=false
+    schemas:
+      - postgres
+    user: postgres
+    password: postgres
+
+springdoc:
+  api-docs:
+    path: '/apidocs'
+    enabled: true
+  swagger-ui:
+    path: 'swagger-ui.html'
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

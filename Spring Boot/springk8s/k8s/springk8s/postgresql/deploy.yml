@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: springk8s-db
+  name: springk8s-db
+  namespace: springk8s
+spec:
+  selector:
+    matchLabels:
+      k8s-app: springk8s-db
+  template:
+    metadata:
+      labels:
+        k8s-app: springk8s-db
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: springk8s-db
+          image: postgres:15
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: springk8s-db-settings
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: springk8s-db-vol
+      volumes:
+        - name: springk8s-db-vol
+          persistentVolumeClaim:
+            claimName: springk8s-pvc

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: springk8s-backend
+  name: springk8s-backend
+  namespace: springk8s
+spec:
+  selector:
+    matchLabels:
+      k8s-app: springk8s-backend
+  template:
+    metadata:
+      labels:
+        k8s-app: springk8s-backend
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: springk8s-backend
+          image: springk8s:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/springk8s
+              name: springk8s-config
+      volumes:
+        - name: springk8s-config
+          configMap:
+            name: springk8s-settings

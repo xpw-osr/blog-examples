@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: springk8s-pv
+  namespace: springk8s
+  labels:
+    type: hostPath
+    k8s-app: springk8s-db
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: $DB_STORAGE_FOLDER
