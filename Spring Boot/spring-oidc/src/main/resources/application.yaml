@@ -1,0 +1,28 @@
+server:
+  port: 3000
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-name: spring-oidc
+            client-id: <your-client-id>
+            client-secret: <your-client-secret>
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: <your-issuer-uri>/
+
+springdoc:
+  api-docs:
+    path: '/apidocs'
+    enabled: true
+  swagger-ui:
+    path: 'swagger-ui.html'
+    enabled: true
