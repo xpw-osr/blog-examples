@@ -5,3 +5,4 @@ springdoc:
   swagger-ui:
     path: 'swagger-ui.html'
     enabled: true
+    defaultModelsExpandDepth: -1
