@@ -6,7 +6,7 @@ namespace util
     class singleton
     {
     public:
-        static const std::unique_ptr<T> &instance();
+        static const std::shared_ptr<T> instance();
 
         singleton(const singleton &) = delete;
         singleton &operator=(const singleton) = delete;
@@ -18,9 +18,9 @@ namespace util
     };
 
     template <typename T>
-    inline const std::unique_ptr<T> &singleton<T>::instance()
+    inline const std::shared_ptr<T> singleton<T>::instance()
     {
-        static const std::unique_ptr<T> &INSTANCE = std::make_unique<T>();
+        static const std::shared_ptr<T> INSTANCE = std::make_shared<T>();
         return INSTANCE;
     }
 }

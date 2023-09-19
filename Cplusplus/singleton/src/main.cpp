@@ -6,6 +6,10 @@
 
 int main(void)
 {
+    auto m = util::singleton<A>::instance();
+    m->a = 100;
+    std::cout << util::singleton<A>::instance()->a << std::endl;
+
     util::singleton<A>::instance()->a = 1;
     std::cout << util::singleton<A>::instance()->a << std::endl;
     util::singleton<A>::instance()->a = 3;
@@ -32,6 +36,8 @@ int main(void)
             t.join();
         }
     }
+
+    std::cout << m->a << std::endl;
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
     std::cout << "quit" << std::endl;
